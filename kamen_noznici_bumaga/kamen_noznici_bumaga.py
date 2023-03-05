@@ -1,46 +1,60 @@
-
-#mäng
+from pickle import APPEND
 import random
-start = input('Olete käivitanud mängu "Kivi, paber, käärid". Kas sa tahad mängida? (Sisestage + või -): ')
-if start == '+':
-    print("Alustan...")
-    print("lõppetan")
-    print("et vaadata skoor sissesta c")
-    user_ball = 0
-    rand_ball = 0
-    while True:
-        user = input("Kivi, käärid või paber? (Sisestage kv, k või p): ")
-        list_play = ['kv', 'k', 'p']
-        if user in list_play:
-            rand = random.choice(list_play)
-            print(rand)
 
-            if rand == 'kv'and user == 'k':
-              rand_ball += 1
-            if rand == 'k' and user == 'kv':
-               user_ball += 1
-            if rand == 'k' and user == 'p':
-               rand_ball += 1
-            if rand == 'p' and user == 'kv':
-               rand_ball += 1
-            if rand == 'p' and user == 'k':
-               user_ball += 1
-            if rand == 'kv' and user == 'p':
-               user_ball += 1
-            if rand== 'kv' and user == 'kv':
-               user_ball +=0
-            if rand== 'p' and user == 'p':
-               user_ball +=0
-            if rand == 'k' and user == 'k':
-               user_ball +=0
-        elif user == 'с':
-            print('Teie punktid - ', user_ball, '. Sinu vastase punktid - ', rand_ball, ".")
-        elif user == '-':
-            print('Teie punktid - ', user_ball, '. Sinu vastase punktid - ', rand_ball, ".")
-            print('Mängu lõpp! Tule jälle!')
-            break
-        else:
-            print('Sisestage kv, k või p')
+r="rock" 
+p="papper" 
+s="scissors"
+player1="player1"
+player2="player2"
+list=[r,p,s]
+
+r>s 
+p>r 
+s>p 
+results=[]
+player1_ball = 0
+player2_ball = 0
+while True:
+    random.shuffle(list)
+    print(f"{player1},{list[0]}")
+    res1 = list[0]
+    random.shuffle(list)
+    print(f"{player2},{list[0]}")
+    res2 = list[0]
 
 
-           
+    if res1==r and res2==s:
+        print("player1 won 1 point")
+        player1_ball += 1
+        results.append(player1)
+    elif res1==s and res2==r:
+        print("player2 won 1 point")
+        player2_ball += 1
+        results.append(player2)
+    elif res1==r and res2==r:
+        print("nobody recive point")
+    elif res1==s and res2==s:
+        print("nobody recive point")
+    elif res1==p and res2==p:
+        print("nobody recive point")
+    elif res1==r and res2==p:
+        print("player2 won 1 point")
+        player2_ball += 1
+        results.append(player2)
+    elif res1==p and res2==r:
+        print("player1 won 1 point")
+        player1_ball += 1
+        results.append(player1)
+    elif res1==s and res2==p:
+        print("player1 won 1 point")
+        player1_ball += 1
+        results.append(player1)
+    elif res1==p and res2==s:
+        print("player2 won 1 point")
+        player2_ball += 1
+        results.append(player2)
+    show=input("show: ")    
+    if show=="show":
+        print(f"player1 points {player1_ball},player2 points {player2_ball},")
+        
+
